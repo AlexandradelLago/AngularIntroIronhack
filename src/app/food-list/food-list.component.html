@@ -1,0 +1,44 @@
+
+  
+
+<h2>Buscale carnal!</h2>
+
+<button (click)="addFood()" >AddFood</button>
+
+<form (submit)="pushToFoods()" *ngIf="show">
+  <input [(ngModel)]="nuevaComida.name" placeholder="name" type="text" name="name">
+  <br>
+  <input [(ngModel)]="nuevaComida.calories" placeholder="calories" type="text" name="calories">
+  <br>
+  <input [(ngModel)]="nuevaComida.image" placeholder="image" type="text" name="image">
+  <input type="submit">
+</form>
+
+<br>
+<br>
+
+<input placeholder="buscale mijo" [(ngModel)]="search" type="text">
+
+<ul>
+  <li *ngFor="let food of foods | filter:'name':search ">
+    <h4>{{food.name}}</h4>
+    <img width="100" [src]="food.image" [alt]="food.name">
+    <p>Calorias: {{food.calories}}</p>
+    <button (click)="addToday(food)" >+</button>
+  </li>
+</ul>
+
+
+<div *ngIf="todayList.length>0"  style="position:fixed;top:0;right:0;overflow:scroll;height:400px">
+  <h3>Total de calorias: {{totalCalories}}</h3>
+<ul>
+  <li *ngFor="let food of todayList">
+    <h4>{{food.name}}</h4>
+    <img width="100" [src]="food.image" [alt]="food.name">
+    <p>Calorias: {{food.calories}}</p>
+    <p>Cantidad: {{food.quantity}}</p>
+  </li>
+</ul>
+</div>
+
+
