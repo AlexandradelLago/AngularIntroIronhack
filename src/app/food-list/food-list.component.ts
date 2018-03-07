@@ -38,4 +38,8 @@ this.totalCalories+=food.calories;
   ngOnInit() {
   }
 
+  submitForm(myForm) {
+    console.log(myForm);
+  }
+
 }

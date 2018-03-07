@@ -21,7 +21,11 @@
 
 <ul>
   <li *ngFor="let food of foods | filter:'name':search ">
-    <h4>{{food.name}}</h4>
+     <!-- <a [routerLink]="[food.name]"> -->
+       <a href="/comida/{{food.name}}">
+        <h4>{{food.name}}</h4>
+    </a>
+    
     <img width="100" [src]="food.image" [alt]="food.name">
     <p>Calorias: {{food.calories}}</p>
     <button (click)="addToday(food)" >+</button>
@@ -40,5 +44,29 @@
   </li>
 </ul>
 </div>
+
+
+
+<form (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+  <p> Username
+    <input type="text" name="username" [(ngModel)]="username"
+          #myUsername="ngModel" minlength="6" />
+  </p>
+  <div *ngIf="myUsername.errors && (myUsername.dirty || myUsername.touched)">
+    <p class="error" [hidden]="!myUsername.errors.minlength">
+      Username must be at least 6 characters long.
+    </p>
+  </div>
+  <p> Password
+    <input type="password" name="password" [(ngModel)]="password"
+          #myPassword="ngModel" required />
+  </p>
+  <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+    <p class="error" [hidden]="!myPassword.errors.required">
+      Password is required
+    </p>
+  </div>
+  <button type="submit"> signup </button>
+</form>
 
 

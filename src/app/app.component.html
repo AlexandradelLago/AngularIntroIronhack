@@ -1,1 +1,9 @@
-<app-food-list></app-food-list>
+<nav class="nav">
+    LogoBlisS
+    <a href="/comida">Comidas</a>
+    <a [href]="['citas']">Citas</a>
+    <a [href]="['about']">About</a>
+    <img width="50" src="{{user.photoURL}}" alt="">
+
+</nav>
+<router-outlet></router-outlet>
