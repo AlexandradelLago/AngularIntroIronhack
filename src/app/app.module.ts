@@ -17,6 +17,10 @@ import { MyHomeComponent } from './my-home/my-home.component';
 import { MyAboutComponent } from './my-about/my-about.component';
 import { ComidaDetailComponent } from './comida-detail/comida-detail.component';
 import { MyCounterComponent } from './my-counter/my-counter.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { ContactsHomeComponent } from './contacts-home/contacts-home.component';
+import { ContactsEditComponent } from './contacts-edit/contacts-edit.component';
+
 
 //estas son en realidad las rutas
 const routes: Routes = [
@@ -25,12 +29,22 @@ const routes: Routes = [
   { path: 'comida', component: FoodListComponent },
   { path: 'about/:id', component: MyAboutComponent },
   { path: 'comida/:name', component: ComidaDetailComponent},
-  { path: 'servicio', component: MyCounterComponent }
+  { path: 'servicio', component: MyCounterComponent },
+  { path: 'http', component: MyAboutComponent },
+  { path:'contact/:id', component:ContactsComponent, 
+  children:[
+    { path: '', component:ContactsHomeComponent},
+    { path: 'edit', component: ContactsEditComponent }
+  ] }
   
 ];
 
 //servicios
 import {CounterService} from './services/counter.service';
+import { ContactsService } from './services/contacts.service';
+
+//http module
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -42,14 +56,18 @@ import {CounterService} from './services/counter.service';
     MyHomeComponent,
     MyAboutComponent,
     ComidaDetailComponent,
-    MyCounterComponent
+    MyCounterComponent,
+    ContactsComponent,
+    ContactsHomeComponent,
+    ContactsEditComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpModule
   ],
-  providers: [CounterService],
+  providers: [CounterService, ContactsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

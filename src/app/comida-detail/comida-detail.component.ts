@@ -15,7 +15,7 @@ export class ComidaDetailComponent implements OnInit {
 
   ngOnInit() {
     this.router.params.subscribe(params=>{
-      this.food = foods.find(f=>f.name === params['name']);
+     // this.food = foods.find(f=>f.name === params['name']);
     });
   }
 
