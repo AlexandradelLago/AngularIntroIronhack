@@ -6,7 +6,7 @@ import { ContactsService} from '../services/contacts.service';
   selector: 'app-contacts-home',
   templateUrl: './contacts-home.component.html',
   styleUrls: ['./contacts-home.component.css'],
-  providers:[ContactsService]
+  //providers:[ContactsService]
 })
 export class ContactsHomeComponent implements OnInit {
   constructor(
